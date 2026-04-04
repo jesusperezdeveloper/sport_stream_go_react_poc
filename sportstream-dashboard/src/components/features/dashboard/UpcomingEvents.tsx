@@ -27,8 +27,8 @@ export function UpcomingEventsPanel() {
   const { data: events, isLoading } = useUpcomingEvents(5);
 
   return (
-    <div className="bg-surface-container-low rounded-2xl p-8">
-      <h2 className="text-xl font-bold tracking-tight mb-8 text-on-surface">Upcoming Events</h2>
+    <div className="bg-surface-container-low rounded-2xl p-4 md:p-8">
+      <h2 className="text-lg md:text-xl font-bold tracking-tight mb-4 md:mb-8 text-on-surface">Upcoming Events</h2>
 
       {isLoading ? (
         <div className="space-y-4">
@@ -41,7 +41,7 @@ export function UpcomingEventsPanel() {
           No upcoming events
         </p>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           {events.map((event, index) => {
             const { month, day } = getMonthDay(event.startTime);
             const sportKey = event.sport.toLowerCase();
@@ -50,29 +50,29 @@ export function UpcomingEventsPanel() {
             return (
               <div
                 key={event.id}
-                className={`flex gap-6 items-start p-4 bg-surface-container-lowest rounded-xl ${
+                className={`flex gap-3 md:gap-6 items-start p-3 md:p-4 bg-surface-container-lowest rounded-xl ${
                   index % 2 !== 0 ? 'opacity-80' : ''
                 }`}
               >
                 <div className={`shrink-0 text-center ${index % 2 !== 0 ? 'opacity-60' : ''}`}>
-                  <div className="text-xs font-bold text-on-surface-variant">{month}</div>
-                  <div className="text-2xl font-black text-on-surface">{day}</div>
+                  <div className="text-[10px] md:text-xs font-bold text-on-surface-variant">{month}</div>
+                  <div className="text-xl md:text-2xl font-black text-on-surface">{day}</div>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between mb-1">
-                    <h4 className="font-bold text-on-surface truncate">{event.title}</h4>
+                    <h4 className="font-bold text-on-surface truncate text-sm md:text-base">{event.title}</h4>
                     <span className={`text-[10px] px-2 py-0.5 ${sportColor.bg} ${sportColor.text} rounded font-black uppercase shrink-0 ml-2`}>
                       {event.sport}
                     </span>
                   </div>
-                  <div className="flex items-center gap-4 text-xs text-on-surface-variant font-medium">
+                  <div className="flex items-center gap-2 md:gap-4 text-[11px] md:text-xs text-on-surface-variant font-medium">
                     <span className="flex items-center gap-1">
-                      <Clock size={14} />
+                      <Clock size={12} className="md:w-3.5 md:h-3.5" />
                       {formatTime(event.startTime)}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin size={14} />
-                      {event.venue}
+                    <span className="flex items-center gap-1 truncate">
+                      <MapPin size={12} className="md:w-3.5 md:h-3.5 shrink-0" />
+                      <span className="truncate">{event.venue}</span>
                     </span>
                   </div>
                 </div>

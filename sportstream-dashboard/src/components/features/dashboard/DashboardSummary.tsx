@@ -13,11 +13,11 @@ export function DashboardSummaryCards() {
 
   if (isLoading || !data) {
     return (
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
         {Array.from({ length: 4 }).map((_, i) => (
           <div
             key={i}
-            className="h-32 animate-pulse rounded-2xl bg-surface-container-lowest shadow-sm"
+            className="h-28 lg:h-32 animate-pulse rounded-2xl bg-surface-container-lowest shadow-sm"
           />
         ))}
       </div>
@@ -25,7 +25,7 @@ export function DashboardSummaryCards() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
       <StatsCard
         icon={Building2}
         iconColor="#006d35"

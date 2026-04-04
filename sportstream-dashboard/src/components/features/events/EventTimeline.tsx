@@ -28,14 +28,14 @@ export function EventTimeline() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Filters */}
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-wrap items-center gap-2 md:gap-3">
         <div className="relative">
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value as EventStatus | '')}
-            className="appearance-none bg-surface-container-lowest border border-outline-variant/30 rounded-full px-4 py-2 pr-8 text-sm font-medium hover:bg-surface-container-low transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/20"
+            className="appearance-none bg-surface-container-lowest border border-outline-variant/30 rounded-full px-4 py-2 pr-8 text-sm font-medium hover:bg-surface-container-low transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/20 min-h-[44px]"
           >
             <option value="">All Statuses</option>
             {statuses.map((s) => (
@@ -52,7 +52,7 @@ export function EventTimeline() {
           placeholder="Filter by sport..."
           value={sportFilter}
           onChange={(e) => setSportFilter(e.target.value)}
-          className="bg-surface-container-lowest border border-outline-variant/30 rounded-full px-4 py-2 text-sm font-medium placeholder-outline focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="bg-surface-container-lowest border border-outline-variant/30 rounded-full px-4 py-2 text-sm font-medium placeholder-outline focus:outline-none focus:ring-2 focus:ring-primary/20 min-h-[44px]"
         />
       </div>
 
@@ -68,7 +68,7 @@ export function EventTimeline() {
           No events found
         </div>
       ) : (
-        <div className="bg-surface-container-low rounded-2xl p-6 space-y-3">
+        <div className="bg-surface-container-low rounded-2xl p-3 md:p-6 space-y-2 md:space-y-3">
           {events.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}

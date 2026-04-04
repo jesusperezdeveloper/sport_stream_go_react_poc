@@ -22,9 +22,9 @@ export function StreamsByTypeChart() {
   const maxValue = chartData.length > 0 ? Math.max(...chartData.map((d) => d.value)) : 1;
 
   return (
-    <div className="lg:col-span-2 bg-inverse-surface rounded-2xl p-8">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-xl font-bold tracking-tight text-white">Streams by Type</h2>
+    <div className="col-span-1 lg:col-span-2 bg-inverse-surface rounded-2xl p-4 md:p-8">
+      <div className="flex justify-between items-center mb-4 md:mb-8">
+        <h2 className="text-lg md:text-xl font-bold tracking-tight text-white">Streams by Type</h2>
         <MoreHorizontal size={20} className="text-white/40" />
       </div>
 
@@ -42,7 +42,7 @@ export function StreamsByTypeChart() {
           No stream data available
         </p>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
           {chartData.map(({ name, value, config }) => {
             const percentage = maxValue > 0 ? (value / maxValue) * 100 : 0;
             return (

@@ -13,7 +13,7 @@ export function LiveNowPanel() {
   const secondary = streams?.slice(1) ?? [];
 
   return (
-    <div className="bg-inverse-surface rounded-2xl p-6 flex flex-col gap-4">
+    <div className="bg-inverse-surface rounded-2xl p-4 md:p-6 flex flex-col gap-4">
       <div className="flex items-center gap-3 mb-2">
         <div className="w-2 h-2 bg-error rounded-full kinetic-pulse" />
         <h2 className="text-lg font-bold tracking-tight text-white">LIVE NOW</h2>
@@ -43,7 +43,7 @@ export function LiveNowPanel() {
                   {formatViewers(featured.viewCount)} VIEWERS
                 </div>
               </div>
-              <div className="p-4">
+              <div className="p-3 md:p-4">
                 <div className="flex justify-between items-start mb-1">
                   <h3 className="font-bold text-white leading-tight text-sm">{featured.title}</h3>
                   {featured.tags?.[0] && (
@@ -59,34 +59,36 @@ export function LiveNowPanel() {
             </div>
           )}
 
-          {/* Secondary streams */}
-          {secondary.map((stream) => (
-            <div
-              key={stream.id}
-              className="group flex gap-4 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors"
-            >
-              <div className="w-24 h-16 shrink-0 bg-slate-800 rounded-lg overflow-hidden">
-                {stream.thumbnailUrl ? (
-                  <img alt={stream.title} className="w-full h-full object-cover opacity-80" src={stream.thumbnailUrl} />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-slate-700 to-slate-900" />
-                )}
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex justify-between">
-                  <h3 className="font-bold text-sm text-white truncate">{stream.title}</h3>
-                  <span className="text-[10px] text-white/40 shrink-0 ml-2">
-                    {formatViewers(stream.viewCount)}
-                  </span>
+          {/* Secondary streams - horizontal scroll on mobile */}
+          <div className="flex flex-row overflow-x-auto gap-3 md:flex-col md:overflow-x-visible -mx-4 px-4 md:mx-0 md:px-0">
+            {secondary.map((stream) => (
+              <div
+                key={stream.id}
+                className="group flex gap-3 md:gap-4 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors shrink-0 w-[280px] md:w-auto"
+              >
+                <div className="w-20 h-14 md:w-24 md:h-16 shrink-0 bg-slate-800 rounded-lg overflow-hidden">
+                  {stream.thumbnailUrl ? (
+                    <img alt={stream.title} className="w-full h-full object-cover opacity-80" src={stream.thumbnailUrl} />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-slate-700 to-slate-900" />
+                  )}
                 </div>
-                {stream.tags?.[0] && (
-                  <div className="text-[10px] bg-white/10 px-2 py-0.5 rounded inline-block text-white/60 mt-1 uppercase">
-                    {stream.tags[0]}
+                <div className="flex-1 min-w-0">
+                  <div className="flex justify-between">
+                    <h3 className="font-bold text-sm text-white truncate">{stream.title}</h3>
+                    <span className="text-[10px] text-white/40 shrink-0 ml-2">
+                      {formatViewers(stream.viewCount)}
+                    </span>
                   </div>
-                )}
+                  {stream.tags?.[0] && (
+                    <div className="text-[10px] bg-white/10 px-2 py-0.5 rounded inline-block text-white/60 mt-1 uppercase">
+                      {stream.tags[0]}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </>
       )}
     </div>

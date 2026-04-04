@@ -22,8 +22,8 @@ function TopClubsByViews() {
   const { data, isLoading } = useDashboard();
 
   return (
-    <div className="bg-surface-container-lowest rounded-2xl p-8 shadow-sm">
-      <h2 className="text-xl font-bold tracking-tight mb-8 text-on-surface">Top Clubs by Views</h2>
+    <div className="bg-surface-container-lowest rounded-2xl p-4 md:p-8 shadow-sm">
+      <h2 className="text-lg md:text-xl font-bold tracking-tight mb-4 md:mb-8 text-on-surface">Top Clubs by Views</h2>
 
       {isLoading || !data ? (
         <div className="space-y-3">
@@ -48,19 +48,19 @@ function TopClubsByViews() {
             return (
               <div
                 key={club.clubId}
-                className="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-xl transition-colors group"
+                className="flex items-center gap-3 md:gap-4 p-3 md:p-4 hover:bg-surface-container-low rounded-xl transition-colors group"
               >
-                <div className={`w-10 h-10 flex items-center justify-center font-black ${rank <= 3 ? 'text-xl' : 'text-lg'} ${color.text} ${color.bg} rounded-full`}>
+                <div className={`w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-black ${rank <= 3 ? 'text-lg md:text-xl' : 'text-base md:text-lg'} ${color.text} ${color.bg} rounded-full`}>
                   {rank}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="font-bold text-on-surface">{club.clubName}</h4>
-                  <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">
+                  <h4 className="font-bold text-on-surface text-sm md:text-base">{club.clubName}</h4>
+                  <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest hidden sm:block">
                     {rank === 1 ? 'Global Audience' : rank === 2 ? 'National Fanbase' : rank === 3 ? 'Local Heroes' : rank === 4 ? 'Elite Circle' : 'Coastal Sports'}
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm font-black text-on-surface">
+                  <div className="text-xs md:text-sm font-black text-on-surface">
                     {formatViews(club.totalViews)}
                   </div>
                   <div className={`text-[10px] font-bold flex items-center justify-end gap-0.5 ${isPositive ? 'text-primary' : 'text-error'}`}>
@@ -84,18 +84,18 @@ export function DashboardPage() {
   return (
     <div>
       <Header title="Dashboard" />
-      <div className="p-8 space-y-8 bg-background min-h-screen">
+      <div className="p-4 md:p-8 space-y-4 md:space-y-8 bg-background min-h-screen">
         {/* Bento Grid: Top Stats */}
         <DashboardSummaryCards />
 
         {/* Middle Section: Asymmetric Layout (2+1) */}
-        <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <section className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
           <StreamsByTypeChart />
           <LiveNowPanel />
         </section>
 
         {/* Bottom Section: 2 columns */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
           <UpcomingEventsPanel />
           <TopClubsByViews />
         </section>

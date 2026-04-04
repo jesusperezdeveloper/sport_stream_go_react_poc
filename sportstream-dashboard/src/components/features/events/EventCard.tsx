@@ -33,26 +33,26 @@ export function EventCard({ event }: EventCardProps) {
   const badgeStyle = SPORT_BADGE[sportKey] ?? 'bg-surface-variant text-on-surface-variant';
 
   return (
-    <div className="flex gap-6 items-start p-4 bg-surface-container-lowest rounded-xl hover:shadow-sm transition-shadow">
+    <div className="flex gap-3 md:gap-6 items-start p-3 md:p-4 bg-surface-container-lowest rounded-xl hover:shadow-sm transition-shadow">
       <div className="shrink-0 text-center">
-        <div className="text-xs font-bold text-on-surface-variant">{month}</div>
-        <div className="text-2xl font-black text-on-surface">{day}</div>
+        <div className="text-[10px] md:text-xs font-bold text-on-surface-variant">{month}</div>
+        <div className="text-xl md:text-2xl font-black text-on-surface">{day}</div>
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex justify-between mb-1">
-          <h4 className="font-bold text-on-surface truncate">{event.title}</h4>
+          <h4 className="font-bold text-on-surface truncate text-sm md:text-base">{event.title}</h4>
           <span className={`text-[10px] px-2 py-0.5 ${badgeStyle} rounded font-black uppercase shrink-0 ml-2`}>
             {event.sport}
           </span>
         </div>
-        <div className="flex items-center gap-4 text-xs text-on-surface-variant font-medium">
+        <div className="flex items-center gap-2 md:gap-4 text-[11px] md:text-xs text-on-surface-variant font-medium flex-wrap">
           <span className="flex items-center gap-1">
-            <Clock size={14} />
+            <Clock size={12} className="shrink-0" />
             {formatTime(event.startTime)}
           </span>
           <span className="flex items-center gap-1">
-            <MapPin size={14} />
-            {event.venue}
+            <MapPin size={12} className="shrink-0" />
+            <span className="truncate">{event.venue}</span>
           </span>
           {event.streamId && (
             <span className="flex items-center gap-1 text-primary">
