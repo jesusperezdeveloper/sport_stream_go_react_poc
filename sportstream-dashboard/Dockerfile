@@ -1,7 +1,6 @@
 FROM node:22-alpine AS builder
 
-ARG VITE_API_URL=http://localhost:8080
-ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_API_URL=https://api-sportstream.jpsdeveloper.com
 
 WORKDIR /app
 COPY package.json package-lock.json* ./
