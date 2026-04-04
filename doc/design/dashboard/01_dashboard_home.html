@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#00567f",
+                        "surface-container-low": "#eef0ff",
+                        "primary-fixed": "#3fff8b",
+                        "tertiary-fixed-dim": "#ff7a7e",
+                        "outline": "#6f768e",
+                        "on-secondary-fixed": "#003855",
+                        "secondary-container": "#a7d7ff",
+                        "on-tertiary-fixed-variant": "#790019",
+                        "tertiary": "#b9002c",
+                        "on-background": "#272e42",
+                        "on-tertiary-fixed": "#3a0007",
+                        "on-surface-variant": "#535b71",
+                        "error": "#b31b25",
+                        "on-primary-fixed": "#004820",
+                        "surface-container-high": "#d9e2ff",
+                        "secondary": "#00618f",
+                        "error-dim": "#9f0519",
+                        "on-tertiary": "#ffefee",
+                        "surface-dim": "#c7d4fa",
+                        "primary-fixed-dim": "#24f07e",
+                        "on-secondary": "#eaf4ff",
+                        "surface-bright": "#f6f6ff",
+                        "secondary-fixed": "#a7d7ff",
+                        "tertiary-container": "#ff9193",
+                        "secondary-dim": "#00557d",
+                        "on-secondary-container": "#004c71",
+                        "outline-variant": "#a5adc6",
+                        "inverse-surface": "#060e20",
+                        "on-primary-fixed-variant": "#006832",
+                        "surface-tint": "#006a33",
+                        "on-tertiary-container": "#680014",
+                        "on-surface": "#272e42",
+                        "on-error": "#ffefee",
+                        "primary-dim": "#005c2b",
+                        "surface-container": "#e2e7ff",
+                        "on-primary-container": "#005d2c",
+                        "surface": "#f6f6ff",
+                        "tertiary-dim": "#a30025",
+                        "tertiary-fixed": "#ff9193",
+                        "on-error-container": "#570008",
+                        "surface-variant": "#d1dcff",
+                        "background": "#f6f6ff",
+                        "error-container": "#fb5151",
+                        "primary": "#006a33",
+                        "on-primary": "#cdffd3",
+                        "surface-container-highest": "#d1dcff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#3fff8b",
+                        "secondary-fixed-dim": "#86cbff",
+                        "inverse-primary": "#3fff8b",
+                        "inverse-on-surface": "#959cb5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-pulse {
+            box-shadow: 0 0 0 0 rgba(185, 0, 44, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(185, 0, 44, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(185, 0, 44, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(185, 0, 44, 0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- SideNavBar (from Shared Components JSON & Design System) -->
+<aside class="fixed h-screen left-0 w-64 border-r-0 bg-slate-950 dark:bg-black flex flex-col z-50">
+<div class="p-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-400 text-3xl" style="font-variation-settings: 'FILL' 1;">sensors</span>
+<div class="text-2xl font-black italic tracking-tighter text-emerald-400">SportStream</div>
+</div>
+<nav class="flex-1 mt-4">
+<!-- Active State: Dashboard -->
+<a class="flex items-center gap-4 bg-emerald-400/10 text-emerald-400 border-l-4 border-emerald-400 px-6 py-4 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-semibold uppercase tracking-widest text-[10px]">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 hover:text-white px-6 py-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="live_tv">live_tv</span>
+<span class="font-semibold uppercase tracking-widest text-[10px]">Live Streams</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 hover:text-white px-6 py-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-semibold uppercase tracking-widest text-[10px]">Schedule</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 hover:text-white px-6 py-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-semibold uppercase tracking-widest text-[10px]">Analytics</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 hover:text-white px-6 py-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-semibold uppercase tracking-widest text-[10px]">Clubs</span>
+</a>
+</nav>
+<div class="mt-auto p-6 space-y-4">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed py-3 rounded-full font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                Go Live
+            </button>
+<div class="pt-6 border-t border-slate-800">
+<a class="flex items-center gap-4 text-slate-400 hover:text-white px-6 py-3 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-semibold uppercase tracking-widest text-[10px]">Settings</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 hover:text-white px-6 py-3 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-semibold uppercase tracking-widest text-[10px]">Support</span>
+</a>
+<div class="px-6 py-4 text-slate-600 text-[10px] font-medium tracking-tighter">v0.1.0 ENGINE</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl flex items-center justify-between px-8">
+<div class="flex items-center gap-8">
+<div class="flex gap-6">
+<a class="text-emerald-600 font-bold border-b-2 border-emerald-600 py-5 transition-all" href="#">Global Feed</a>
+<a class="text-slate-500 font-medium py-5 hover:text-emerald-500 transition-all" href="#">Network Status</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-500 hover:text-emerald-500 transition-colors">search</button>
+<button class="material-symbols-outlined text-slate-500 hover:text-emerald-500 transition-colors relative">
+                    notifications
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-tertiary rounded-full"></span>
+</button>
+</div>
+<div class="h-8 w-px bg-surface-container mx-2"></div>
+<div class="flex items-center gap-3">
+<img alt="Administrator profile" class="w-8 h-8 rounded-full bg-surface-container-high" data-alt="professional portrait of a confident media administrator in a modern office setting with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNJ790ciVMdx-zY07U70Gk3uGWUb-o0kF0NA-HQT8SkrJw1Zi5dU5HYfIm8rKnVZvWTKD7Uw-XYkV3whZJFelEsXPO-WCPUa2FuNABj8QcIyzxO-0v_eoFRQAWi1dNnK5LEd9KOHVxazBJ0RjjW2_UUg9djus8L_WIgZA1Jcs3WOng8zG_lRBZY6ScOy1WQ9jldj8WVet_7rFwr99J9AQdjnxwWg3PSKCVGgEhehOrph7EvYwLLehN7WjXL7MEjyxoFGSQNUPHyZ7h"/>
+<span class="text-sm font-semibold text-on-surface">Admin Portal</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 mt-16 p-8 min-h-screen bg-background">
+<!-- Bento Grid: Top Stats -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<!-- Card 1: Total Clubs -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-primary/10 rounded-xl text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">corporate_fare</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">+12% WoW</span>
+</div>
+<div class="text-4xl font-black tracking-tight text-on-surface mb-1">5</div>
+<div class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Total Clubs</div>
+</div>
+<!-- Card 2: Live Streams -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border-l-4 border-tertiary shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-tertiary rounded-full kinetic-pulse"></div>
+<span class="px-2 py-0.5 bg-tertiary text-white text-[10px] font-black rounded-sm">LIVE</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Concurrent</span>
+</div>
+<div class="text-4xl font-black tracking-tight text-on-surface mb-1">2</div>
+<div class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Active Streams</div>
+</div>
+<!-- Card 3: Upcoming Events -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border-l-4 border-amber-500 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-amber-500/10 rounded-xl text-amber-600">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event</span>
+</div>
+</div>
+<div class="text-4xl font-black tracking-tight text-on-surface mb-1">4</div>
+<div class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Upcoming Events</div>
+</div>
+<!-- Card 4: Total Views -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border-l-4 border-secondary shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary/10 rounded-xl text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">visibility</span>
+</div>
+</div>
+<div class="text-4xl font-black tracking-tight text-on-surface mb-1">1.6M</div>
+<div class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Total Network Views</div>
+</div>
+</section>
+<!-- Middle Section: Asymmetric Layout -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+<!-- Left: Streams by Type (Dark Mode Styling) -->
+<div class="lg:col-span-2 bg-inverse-surface rounded-2xl p-8 text-surface">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-xl font-bold tracking-tight">Streams by Type</h2>
+<span class="material-symbols-outlined text-outline-variant">more_horiz</span>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-widest mb-1">
+<span>Live Match</span>
+<span class="text-primary-fixed">5 Streams</span>
+</div>
+<div class="h-3 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed rounded-full" style="width: 85%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-widest mb-1">
+<span>VOD Replays</span>
+<span class="text-secondary-fixed">1 Stream</span>
+</div>
+<div class="h-3 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed rounded-full" style="width: 20%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-widest mb-1">
+<span>Highlights</span>
+<span class="text-amber-400">3 Streams</span>
+</div>
+<div class="h-3 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-amber-400 rounded-full" style="width: 55%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-widest mb-1">
+<span>Behind the Scenes</span>
+<span class="text-purple-400">1 Stream</span>
+</div>
+<div class="h-3 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-purple-400 rounded-full" style="width: 15%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Live Now Cards -->
+<div class="bg-inverse-surface rounded-2xl p-6 flex flex-col gap-4">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-2 h-2 bg-tertiary rounded-full kinetic-pulse"></div>
+<h2 class="text-lg font-bold tracking-tight text-white">LIVE NOW</h2>
+</div>
+<div class="group relative bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-colors">
+<div class="aspect-video w-full bg-slate-800 relative">
+<img alt="Lazio vs Roma" class="w-full h-full object-cover opacity-80" data-alt="wide angle shot of a professional football match under bright stadium lights with a packed cheering crowd" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXUBJOVbaJ3UJrevpVDt2rI0I4aNdmAgWGiNqt3B6LJOE98iXSuIH4tMd3KDBqorncaz0AfxkclBQ8pTJlHw30EIBit2nplfEvMQQ3hgatjgQGjSI6Tquha2YaF_i2nzdfTGRB7zQI0nSzVBOdpCZeBon5IeFFUDZCvJuCA-wdy07PXs82bjXYn1b-Sp2fFEXa-nAMfacwjNcA6yxiBUK1u3B-2pfhFnSuSzopcxgNhP7kPE3OIHkNzoQ50bfNU00BFDvdRBlMoXft"/>
+<div class="absolute bottom-2 left-2 bg-tertiary text-[10px] font-black px-2 py-0.5 rounded-sm">320K VIEWERS</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-bold text-white leading-tight">Lazio vs Roma</h3>
+<span class="text-[10px] bg-white/10 px-2 py-0.5 rounded text-white/60">FOOTBALL</span>
+</div>
+<p class="text-[10px] text-white/40 uppercase tracking-widest font-bold">Derby della Capitale</p>
+</div>
+</div>
+<div class="group flex gap-4 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+<div class="w-24 h-16 shrink-0 bg-slate-800 rounded-lg overflow-hidden">
+<img alt="Perugia vs Trento" class="w-full h-full object-cover opacity-80" data-alt="dynamic shot of a volleyball player mid-air about to spike the ball over the net in a high-intensity indoor arena" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjyVY5exHeO9RAExpelwLU2VX7nFiu7fTZflat2njgHZsfXb1HITgPCIrmypn24Rh4iCa-_KQqVoW3Qm96UZg_7NmpQT6FEX58vY4nity9qv4WHkEcJKb91jZs1Fc1oXvFjrvlNoRgXwhYzeJ9w-CCkwxNZiLEHW336eFsVAw17Sej-qVCoYHNH78O88cZCD_BnUEy86iuDniayQK3qp_z7MNIV76TmVTIQekqIOl_bEo_JVxIA0lvDF2Q50iMfjyBRMuASR7R-XgD"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<h3 class="font-bold text-sm text-white">Perugia vs Trento</h3>
+<span class="text-[10px] text-white/40">89K</span>
+</div>
+<div class="text-[10px] bg-white/10 px-2 py-0.5 rounded inline-block text-white/60 mt-1 uppercase">VOLLEYBALL</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Left: Upcoming Events Timeline -->
+<div class="bg-surface-container-low rounded-2xl p-8">
+<h2 class="text-xl font-bold tracking-tight mb-8">Upcoming Events</h2>
+<div class="space-y-4">
+<!-- Timeline Item -->
+<div class="flex gap-6 items-start p-4 bg-surface-container-lowest rounded-xl">
+<div class="shrink-0 text-center">
+<div class="text-xs font-bold text-on-surface-variant">OCT</div>
+<div class="text-2xl font-black text-on-surface">24</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<h4 class="font-bold text-on-surface">Finals: Masters League</h4>
+<span class="text-[10px] px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded font-black">ESPORTS</span>
+</div>
+<div class="flex items-center gap-4 text-xs text-on-surface-variant font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 19:00</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span> Cyber Dome Arena</span>
+</div>
+</div>
+</div>
+<div class="flex gap-6 items-start p-4 bg-surface-container-lowest/50 rounded-xl">
+<div class="shrink-0 text-center opacity-60">
+<div class="text-xs font-bold text-on-surface-variant">OCT</div>
+<div class="text-2xl font-black text-on-surface">25</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<h4 class="font-bold text-on-surface">Junior Championships</h4>
+<span class="text-[10px] px-2 py-0.5 bg-primary-container text-on-primary-container rounded font-black">TENNIS</span>
+</div>
+<div class="flex items-center gap-4 text-xs text-on-surface-variant font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 10:30</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span> Green Court Park</span>
+</div>
+</div>
+</div>
+<div class="flex gap-6 items-start p-4 bg-surface-container-lowest rounded-xl">
+<div class="shrink-0 text-center">
+<div class="text-xs font-bold text-on-surface-variant">OCT</div>
+<div class="text-2xl font-black text-on-surface">27</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<h4 class="font-bold text-on-surface">Swimming qualifiers</h4>
+<span class="text-[10px] px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded font-black">AQUATICS</span>
+</div>
+<div class="flex items-center gap-4 text-xs text-on-surface-variant font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 08:00</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span> Olympic Pool</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Top Clubs by Views -->
+<div class="bg-surface-container-lowest rounded-2xl p-8 shadow-sm">
+<h2 class="text-xl font-bold tracking-tight mb-8">Top Clubs by Views</h2>
+<div class="space-y-2">
+<!-- Rank 1 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-xl transition-colors group">
+<div class="w-10 h-10 flex items-center justify-center font-black text-xl text-amber-500 bg-amber-500/10 rounded-full">1</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">A.S. Roma Esports</h4>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Global Audience</p>
+</div>
+<div class="text-right">
+<div class="text-sm font-black text-on-surface">45.2M</div>
+<div class="text-[10px] text-primary font-bold">↑ 4.2%</div>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-xl transition-colors group">
+<div class="w-10 h-10 flex items-center justify-center font-black text-xl text-slate-400 bg-slate-400/10 rounded-full">2</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Perugia Volley</h4>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">National Fanbase</p>
+</div>
+<div class="text-right">
+<div class="text-sm font-black text-on-surface">28.1M</div>
+<div class="text-[10px] text-primary font-bold">↑ 1.8%</div>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-xl transition-colors group">
+<div class="w-10 h-10 flex items-center justify-center font-black text-xl text-amber-700 bg-amber-700/10 rounded-full">3</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Trento Basket</h4>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Local Heroes</p>
+</div>
+<div class="text-right">
+<div class="text-sm font-black text-on-surface">19.5M</div>
+<div class="text-[10px] text-tertiary font-bold">↓ 0.5%</div>
+</div>
+</div>
+<!-- Rank 4 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-xl transition-colors group">
+<div class="w-10 h-10 flex items-center justify-center font-black text-lg text-on-surface-variant bg-surface-container rounded-full">4</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Milan Polo Club</h4>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Elite Circle</p>
+</div>
+<div class="text-right">
+<div class="text-sm font-black text-on-surface">12.8M</div>
+<div class="text-[10px] text-primary font-bold">↑ 8.4%</div>
+</div>
+</div>
+<!-- Rank 5 -->
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-xl transition-colors group">
+<div class="w-10 h-10 flex items-center justify-center font-black text-lg text-on-surface-variant bg-surface-container rounded-full">5</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Napoli Sailing</h4>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Coastal Sports</p>
+</div>
+<div class="text-right">
+<div class="text-sm font-black text-on-surface">8.4M</div>
+<div class="text-[10px] text-primary font-bold">↑ 2.1%</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

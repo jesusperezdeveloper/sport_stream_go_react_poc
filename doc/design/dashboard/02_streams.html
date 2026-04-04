@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SportStream Management Console - Streams</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#131b2e",
+                        "primary-fixed": "#62ff96",
+                        "on-primary-container": "#00612e",
+                        "surface-dim": "#d8dadc",
+                        "tertiary-fixed-dim": "#fdb878",
+                        "secondary": "#565e74",
+                        "on-tertiary-fixed": "#2d1600",
+                        "inverse-surface": "#2d3133",
+                        "surface": "#f7f9fb",
+                        "inverse-primary": "#00e475",
+                        "on-primary-fixed-variant": "#005226",
+                        "tertiary-fixed": "#ffdcbf",
+                        "on-tertiary-fixed-variant": "#6a3c03",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "background": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "secondary-container": "#dae2fd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#3b4a3d",
+                        "outline-variant": "#bacbb9",
+                        "tertiary-container": "#ffba79",
+                        "on-primary-fixed": "#00210b",
+                        "outline": "#6b7b6c",
+                        "surface-variant": "#e0e3e5",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#5c647a",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#006d35",
+                        "surface-bright": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-fixed-dim": "#00e475",
+                        "on-surface": "#191c1e",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#794810",
+                        "tertiary": "#86521b",
+                        "on-error": "#ffffff",
+                        "primary-container": "#00e676",
+                        "primary": "#006d35",
+                        "surface-container-highest": "#e0e3e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 bottom-0 flex flex-col z-40 bg-[#131b2e] h-full w-64 border-r-0">
+<div class="px-6 py-8">
+<div class="flex items-center gap-2 mb-10">
+<span class="material-symbols-outlined text-[#00e676] text-3xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<div>
+<h1 class="text-[#00e676] font-black text-xl tracking-tighter">SportStream</h1>
+<p class="text-white/40 text-[10px] uppercase tracking-widest font-bold">Management Console</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 text-white/70 py-3 px-6 hover:text-white hover:bg-white/5 transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] font-medium text-sm tracking-tight">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-[#006d35]/15 text-[#00e676] border-l-2 border-[#00e676] py-3 px-6 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="videocam" style="font-variation-settings: 'FILL' 1;">videocam</span>
+<span class="font-['Inter'] font-medium text-sm tracking-tight">Streams</span>
+</a>
+<a class="flex items-center gap-3 text-white/70 py-3 px-6 hover:text-white hover:bg-white/5 transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="groups">groups</span>
+<span class="font-['Inter'] font-medium text-sm tracking-tight">Clubs</span>
+</a>
+<a class="flex items-center gap-3 text-white/70 py-3 px-6 hover:text-white hover:bg-white/5 transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="event">event</span>
+<span class="font-['Inter'] font-medium text-sm tracking-tight">Events</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto px-6 py-6 border-t border-white/5">
+<div class="flex items-center gap-3 px-2">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="professional headshot of a middle-aged male executive in a dark blue suit with a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC6WEcdJ_yLe3PhjtObQznxFXWl4XEmWGDjuuxkO47ELdjIcMIav9U0HhH81nnJ5VkmBibBa7QZDXvPC8Ev8XuEo07TngqGotVMZtiWdWhg_Zb9GABPOAi0jFej2W8fdlZR-MmeCsN_wYQkG4ODla4sYsAPBO6yVl0rhLJfiu4d7KPgr_v0eWiImXQc-hjLNMCAfkQE6sSrjso83NHndI0-ZrxBTW6z0nHI5FO5oHMrEgvarMfEF7qjHhfhIEAWnddl4KpPSjyfYxJ"/>
+<div class="overflow-hidden">
+<p class="text-white text-sm font-semibold truncate">Alex Rivera</p>
+<p class="text-white/40 text-xs truncate">Head of Content</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="pl-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-8 py-4 bg-surface-container-low/50 sticky top-0 z-30 backdrop-blur-md">
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-xl">search</span>
+<input class="bg-surface-container-lowest border-none rounded-xl pl-10 pr-4 py-2 w-80 text-sm focus:ring-2 focus:ring-primary/20" placeholder="Search streams, clubs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-all relative">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant">settings</span>
+</button>
+<div class="h-8 w-px bg-outline-variant/30 mx-2"></div>
+<button class="flex items-center gap-2 px-3 py-1.5 hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant">account_circle</span>
+<span class="text-sm font-medium">My Account</span>
+</button>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-8 space-y-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<nav class="flex items-center gap-2 text-xs font-bold text-outline uppercase tracking-widest mb-1">
+<span>Management</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-primary font-black">Streams</span>
+</nav>
+<h2 class="font-headline font-black text-4xl tracking-tight text-on-surface">Streams</h2>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 bg-surface-container-lowest border border-outline-variant/30 rounded-full px-4 py-2 text-sm font-medium hover:bg-surface-container-low transition-all">
+<span>All Statuses</span>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<button class="flex items-center gap-2 bg-surface-container-lowest border border-outline-variant/30 rounded-full px-4 py-2 text-sm font-medium hover:bg-surface-container-low transition-all">
+<span>All Types</span>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+</div>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-xl">add</span>
+<span>New Stream</span>
+</button>
+</div>
+</div>
+<!-- Premium Table Section -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-xl shadow-on-secondary-fixed/5 overflow-hidden border border-outline-variant/10">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/20">
+<th class="py-4 px-6 text-[11px] font-bold text-outline-variant uppercase tracking-wider">Title</th>
+<th class="py-4 px-6 text-[11px] font-bold text-outline-variant uppercase tracking-wider">Club</th>
+<th class="py-4 px-6 text-[11px] font-bold text-outline-variant uppercase tracking-wider text-center">Type</th>
+<th class="py-4 px-6 text-[11px] font-bold text-outline-variant uppercase tracking-wider">Status</th>
+<th class="py-4 px-6 text-[11px] font-bold text-outline-variant uppercase tracking-wider text-right">Views</th>
+<th class="py-4 px-6 text-[11px] font-bold text-outline-variant uppercase tracking-wider text-center">Duration</th>
+<th class="py-4 px-6 text-[11px] font-bold text-outline-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="vibrant action shot of soccer players in competitive match in an olympic sized stadium" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK-1Z8NmC8aGpuL44UZxffwObz7zZYu-s2fTZ6qqLM8A_6O5j2BTkxellq-1yff1T93uMDVOh4d3bX_X00zHJIygVmEvilFR_EPGbYZcq9Q0OiPmL6raHqlqdIn2WWeQ9xaz-RVDnFBcl6Xdx2EyvN9yNe4k5QLwcl0cr01RxwN22CQLXSITJpKng3BNJx6x5tD0nUYQhVzJLnqbvwXTfZj2SC5rm8euhDaB-G-8Md5qDTsBrTO38oHFcNu1-YqLKsAKvjKlt-vAKA"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Lazio vs Roma — Serie A Matchday 28</span>
+</div>
+</td>
+<td class="py-5 px-6 text-sm text-on-surface-variant font-medium">S.S. Lazio</td>
+<td class="py-5 px-6 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-widest bg-primary-container/20 text-on-primary-container uppercase">LIVE</span>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-error text-[11px] font-bold bg-error-container/20 px-2 py-1 rounded-full w-fit">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+                                        LIVE
+                                    </div>
+</td>
+<td class="py-5 px-6 text-right font-mono text-sm font-semibold">320,000</td>
+<td class="py-5 px-6 text-center text-outline-variant text-sm font-medium">--</td>
+<td class="py-5 px-6 text-right">
+<button class="text-error hover:bg-error-container/30 px-3 py-1 rounded-md text-xs font-bold transition-all inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">stop_circle</span> End
+                                    </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low/30 hover:bg-primary/5 transition-colors group">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional football stadium floodlights illuminating a lush green pitch under a night sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK6kR8lh51slYUHh_l7-tA86Lw65I2145es7P28xN6EobpR-8Di29rLVr-W0X-s0e9h7FHGFRT33g84616A-W_iahQeW2OzgVMAA59uEj3ORHYeHnHUHzUaTlMrkOG6vCUfv7dNTzuPdWW_5L4T-Rsxi3hj9lYmzu8ATRoQOvNTCGeJDHDQI3vz3w5dG2lLVt2cowakro4jQhD4M4o3PWT0Jvo9es_3v5MxgpCNYNYeDGX3Yua94x_3mN6Zv9nG_i02pD5lK5nZ1H4"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Sevilla vs Real Madrid — La Liga Matchday 29</span>
+</div>
+</td>
+<td class="py-5 px-6 text-sm text-on-surface-variant font-medium">Sevilla FC</td>
+<td class="py-5 px-6 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-widest bg-primary-container/20 text-on-primary-container uppercase">LIVE</span>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-tertiary text-[11px] font-bold bg-tertiary-container/10 px-2 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-[14px]">schedule</span> SCHEDULED
+                                    </div>
+</td>
+<td class="py-5 px-6 text-right font-mono text-sm font-semibold text-outline-variant">--</td>
+<td class="py-5 px-6 text-center text-outline-variant text-sm font-medium">--</td>
+<td class="py-5 px-6 text-right">
+<button class="bg-primary text-on-primary hover:bg-on-primary-container px-3 py-1 rounded-md text-xs font-bold transition-all shadow-sm">
+                                        Go Live
+                                    </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up of a professional tennis player serving under intense sunlight on a clay court" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr7-t69wxFpBgzmnOy1Uc1177nBU-Tfi_f7bSTfeob7kMHmCBjeQg3aoW_eAMx_L-BP6brHRU4pOhQ5NfkgIYKzgjvpfGs-lGpX7D1mge86qZUNDl9X1A9VF9lb-GIwkkP2JnuoNcJnZBcx9rM0_ZXokXcvDLsI7oRGEQyhXTToyKOJ2c8tulzvYTP9-WvJH1AYkqp_pF4MykRaQ6tBHSt40XjSoOh9R757z5Mt8_lCVuAr3SLgIzH8wemZF2DOWbirToy3iRN0xoK"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">ATP Rome Masters — Sinner vs Djokovic</span>
+</div>
+</td>
+<td class="py-5 px-6 text-sm text-on-surface-variant font-medium">SuperTennix</td>
+<td class="py-5 px-6 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-widest bg-primary-container/20 text-on-primary-container uppercase">LIVE</span>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-error text-[11px] font-bold bg-error-container/20 px-2 py-1 rounded-full w-fit">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+                                        LIVE
+                                    </div>
+</td>
+<td class="py-5 px-6 text-right font-mono text-sm font-semibold">420,000</td>
+<td class="py-5 px-6 text-center text-outline-variant text-sm font-medium">--</td>
+<td class="py-5 px-6 text-right">
+<button class="text-error hover:bg-error-container/30 px-3 py-1 rounded-md text-xs font-bold transition-all inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">stop_circle</span> End
+                                    </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-container-low/30 hover:bg-primary/5 transition-colors group">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="cinematic highlights of soccer goals with multiple players celebrating under atmospheric stadium lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfEBeV3MkDqDxAfkwWBeHTrYxPm_53SlaUZNak4agHmOv0RGusP8aTuh3WuVRc-_pkDeLKcfUh49Gyr5sf5MBogO2pgMU0PY3YGPrzs5oCA38U43H9y6eeq19eNz1EPHVqvfNvuMf7IlczYUH2p0B0RQPWZq73N8_zFZMoWI7RqVB5C86sT-L-lDgVKmnpcQyS-ffIBlfv3vD3q4vbq2S5ndiN00HV6H-ZgUtwJ9RmwDh_1_Pyv4gKRQeGQmJGoDi6pWBLmk0JlJMt"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Serie A Highlights — Week 27</span>
+</div>
+</td>
+<td class="py-5 px-6 text-sm text-on-surface-variant font-medium">S.S. Lazio</td>
+<td class="py-5 px-6 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-widest bg-secondary-container/30 text-on-secondary-container uppercase">HIGHLIGHT</span>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-outline text-[11px] font-bold bg-surface-container-high px-2 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> ENDED
+                                    </div>
+</td>
+<td class="py-5 px-6 text-right font-mono text-sm font-semibold">45,000</td>
+<td class="py-5 px-6 text-center text-on-surface-variant text-sm font-medium">12:30</td>
+<td class="py-5 px-6 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional athletes practicing tactical drills on a perfectly manicured training pitch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhhURf572pLDypcwdtpN38JllprD4aBoMZn1pZWLTsR8qb-m8klC-JuI5lSAOAO_MfSzDzLUxQ-AkHtEkG5JTXUSqGSsxPYBKNP6wQewzMVTyCh4_ntCxi8qXbJRBVNnHbygpclh_IRgM3_DJqtKO40t_iLSQSlcQki74G8kZRyEblMjJPQhNtBo6cXDcWq3ee0VVpb8UxX9D3lxcxoVwoJneHD25q1W6aMMbrJhay2zUcmNxQqwVnXvMFqeQen0fEKB7tSUN1ouaI"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Sevilla FC Training Session</span>
+</div>
+</td>
+<td class="py-5 px-6 text-sm text-on-surface-variant font-medium">Sevilla FC</td>
+<td class="py-5 px-6 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-widest bg-blue-100 text-blue-800 uppercase">VOD</span>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-on-secondary-fixed text-[11px] font-bold bg-surface-container-highest px-2 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-[14px]">archive</span> ARCHIVED
+                                    </div>
+</td>
+<td class="py-5 px-6 text-right font-mono text-sm font-semibold">150,000</td>
+<td class="py-5 px-6 text-center text-on-surface-variant text-sm font-medium">1:22:00</td>
+<td class="py-5 px-6 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="bg-surface-container-low/30 hover:bg-primary/5 transition-colors group">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="top view of basketball court during intense game play with players in action" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2VozZ-8ikKO9I49cMRQ00R0ssGfmgD7UybwEoznpW5yOyx0cY_NFwrODrWGNIW5zHgV7OdLskyt0xQ1TxZFBG9zQHioKWnQ8XOX9z4kTCTd0Uc9KNHYkbFSrOn8vaVxJ4p9jm4xFDK-3EbQC0LdQUtDX6amKQt09wTa6h_oNSoPeao9_5znIrtTbvaqePUqMW2vRWYEa4Xs42NkUVDU4kvWeyoSPu-AtibKatyOd2kn3FcOnb5QwZBiElq9MRYUASe_Aal_HEWbqi"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">EuroLeague Final: Real Madrid vs Olympiacos</span>
+</div>
+</td>
+<td class="py-5 px-6 text-sm text-on-surface-variant font-medium">EuroLeague</td>
+<td class="py-5 px-6 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-widest bg-primary-container/20 text-on-primary-container uppercase">LIVE</span>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-error text-[11px] font-bold bg-error-container/20 px-2 py-1 rounded-full w-fit">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+                                        LIVE
+                                    </div>
+</td>
+<td class="py-5 px-6 text-right font-mono text-sm font-semibold">890,000</td>
+<td class="py-5 px-6 text-center text-outline-variant text-sm font-medium">--</td>
+<td class="py-5 px-6 text-right">
+<button class="text-error hover:bg-error-container/30 px-3 py-1 rounded-md text-xs font-bold transition-all inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">stop_circle</span> End
+                                    </button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="aerial view of large stadium packed with fans with lights beaming across the sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP2W2JOxeWA9daqBj0eoA7NGSXN5Kxuij9zL63ooE5nQMP80M4lhKlOiQ0KPu7e6bth5l3029_uEvOA_QNSC3yTsFCHVdkSGPctn9SWRQkyR0EXTB8vDWLmKe_eALlICTP7f2jpXJGdteu9BWqwiblVK7ycUHT8lBxW0CVkP-R3Wrt-m0gL_D8WvNqXGCiYL6URWYXigwZkoGww4XNWj4oPBDSsuX3lH4NHJS8ApE1F1F174RAVgx0sLGTEo5WZFgojanVMnbQqhKh"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Ligue 1 - PSG vs Marseille</span>
+</div>
+</td>
+<td class="py-5 px-6 text-sm text-on-surface-variant font-medium">PSG TV</td>
+<td class="py-5 px-6 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-widest bg-primary-container/20 text-on-primary-container uppercase">LIVE</span>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-tertiary text-[11px] font-bold bg-tertiary-container/10 px-2 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-[14px]">schedule</span> SCHEDULED
+                                    </div>
+</td>
+<td class="py-5 px-6 text-right font-mono text-sm font-semibold text-outline-variant">--</td>
+<td class="py-5 px-6 text-center text-outline-variant text-sm font-medium">--</td>
+<td class="py-5 px-6 text-right">
+<button class="bg-primary text-on-primary hover:bg-on-primary-container px-3 py-1 rounded-md text-xs font-bold transition-all shadow-sm">
+                                        Go Live
+                                    </button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="bg-surface-container-low/30 hover:bg-primary/5 transition-colors group">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="closeup of a professional football trophy with beautiful metallic shine and soft bokeh lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjW94KN9BvcpNYhRrOgVMVKtVNXlg-Z31P0jV9LzCOEcvrGvUwvxhCxwCDZCByGdKkbgguFC4h25y1FIecqfAwNyxWDCNwK7HJb7MyIl1603vjPaubbf7Evf6Vq7uYJU3l4N2Fm2pmjf4bwgfg_v2S3uI-yBczVRr4uAwK48l1tk9_FT4Yjf0sdHjqAdD9oiFUiD-22zZutRB_5gaPSk0012JXK1dcWyj_7pW-JthrB2USCocY5PL-MmT2If_CrqJVQwrOMyUIaOr3"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Copa del Rey Quarter-Finals Highlights</span>
+</div>
+</td>
+<td class="py-5 px-6 text-sm text-on-surface-variant font-medium">RFEF</td>
+<td class="py-5 px-6 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-widest bg-secondary-container/30 text-on-secondary-container uppercase">HIGHLIGHT</span>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-outline text-[11px] font-bold bg-surface-container-high px-2 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> ENDED
+                                    </div>
+</td>
+<td class="py-5 px-6 text-right font-mono text-sm font-semibold">72,000</td>
+<td class="py-5 px-6 text-center text-on-surface-variant text-sm font-medium">08:45</td>
+<td class="py-5 px-6 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 9 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="camera lens and professional broadcasting equipment in a stadium tunnel setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi_QmuxDN_rZp7ucCBnKYpZuefdRQLyHZn7PzGDFC5phJGy99qcRgYW_Lx8cJu4W1wyy4mrjTPvB0BsBuRW7RYMTp2oVjkImhWAlQjX1ncnuIZjL8OQagBCp6ncJzendF6OHkIgGlxbVhP7P0Hni64MEFAMrb5HQSuYlrLvQol9fsQZF_BJtKWNsI34QWsOAqSUo1owrTm4aG6wC71n0z4JrfaJ4y6Cq2bbEeuD0Kkp7zVWJBeOrnp7ne4vMSaESPlIVRTpcI-G7An"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Behind the Scenes: AC Milan Training</span>
+</div>
+</td>
+<td class="py-5 px-6 text-sm text-on-surface-variant font-medium">Milan Media</td>
+<td class="py-5 px-6 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-widest bg-tertiary-container/30 text-on-tertiary-container uppercase">BTS</span>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-blue-600 text-[11px] font-bold bg-blue-50 px-2 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-[14px]">videocam</span> VOD
+                                    </div>
+</td>
+<td class="py-5 px-6 text-right font-mono text-sm font-semibold">28,000</td>
+<td class="py-5 px-6 text-center text-on-surface-variant text-sm font-medium">15:20</td>
+<td class="py-5 px-6 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 10 -->
+<tr class="bg-surface-container-low/30 hover:bg-primary/5 transition-colors group">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up of vintage black and white football photo on a nostalgic texture background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1Xm213HvMoBnXiqW2E8C0w_aSgO0HqR8WwQ3nDD8U-XJdeoWr3VOJQXbOzIsGo8QcweJrRCkgUZ8ZX9Yr8PiN83G0_Xefw2MnGJD3yyOgYDDGyJWu05-4fxEmuewWEiAU1tfLEHd4H3Pu--J7fudArB0ROq9XrNFso7vBkSPeVjRKHnFaiHoOFfT1_73fegMWMVp4CN3HI4ShEaOMhWeYiEyoO975FWpc4BwHtsJZSs7zOzm813SkhDGqmY3CyAQqLr7p8hMShGIr"/>
+</div>
+<span class="font-semibold text-on-surface text-sm">Classic Match: Inter vs Milan 2010</span>
+</div>
+</td>
+<td class="py-5 px-6 text-sm text-on-surface-variant font-medium">Inter TV</td>
+<td class="py-5 px-6 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-widest bg-blue-100 text-blue-800 uppercase">VOD</span>
+</td>
+<td class="py-5 px-6">
+<div class="flex items-center gap-2 text-on-secondary-fixed text-[11px] font-bold bg-surface-container-highest px-2 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-[14px]">archive</span> ARCHIVED
+                                    </div>
+</td>
+<td class="py-5 px-6 text-right font-mono text-sm font-semibold">1,200,000</td>
+<td class="py-5 px-6 text-center text-on-surface-variant text-sm font-medium">1:45:00</td>
+<td class="py-5 px-6 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between px-8 py-4 bg-surface-container-low/50">
+<p class="text-xs font-semibold text-on-surface-variant">Showing 1-10 of 10 streams</p>
+<div class="flex items-center gap-1">
+<button class="p-1.5 hover:bg-surface-container-high rounded-lg text-outline-variant disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-on-primary text-xs font-bold">1</button>
+<button class="p-1.5 hover:bg-surface-container-high rounded-lg text-outline-variant disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bento Stats Grid (Decorative/Extra Context) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="bg-surface-container-low p-6 rounded-2xl flex flex-col justify-between h-32 border border-outline-variant/10">
+<span class="text-[10px] font-black uppercase tracking-widest text-outline">Total Active Streams</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black text-on-surface">12</span>
+<span class="text-xs font-bold text-primary flex items-center">+4 <span class="material-symbols-outlined text-sm">trending_up</span></span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl flex flex-col justify-between h-32 border border-outline-variant/10">
+<span class="text-[10px] font-black uppercase tracking-widest text-outline">Concurrent Viewers</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black text-on-surface">1.2M</span>
+<span class="text-xs font-bold text-primary flex items-center">+18% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl flex flex-col justify-between h-32 border border-outline-variant/10">
+<span class="text-[10px] font-black uppercase tracking-widest text-outline">Storage Used</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black text-on-surface">4.2 TB</span>
+<div class="w-20 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 65%;"></div>
+</div>
+</div>
+</div>
+<div class="bg-on-secondary-fixed p-6 rounded-2xl flex flex-col justify-between h-32 relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="text-[10px] font-black uppercase tracking-widest text-white/40">Bandwidth Health</span>
+<div class="flex items-center gap-2">
+<span class="text-3xl font-black text-white">99.9</span>
+<span class="text-xs font-bold text-[#00e676]">%</span>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-8xl text-white/5 rotate-12">sensors</span>
+</div>
+</div>
+</div>
+</main>
+</body></html>

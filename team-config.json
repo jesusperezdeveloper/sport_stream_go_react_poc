@@ -1,0 +1,102 @@
+{
+  "$schema": "SpecBox Engine v5.17.0 - Agent Teams Configuration (Go + React)",
+  "team": {
+    "name": "sport-stream-go-react-poc",
+    "description": "Equipo de desarrollo para Sport Stream Go+React POC",
+    "maxConcurrentTeammates": 3
+  },
+  "orchestrator": {
+    "model": "opus",
+    "prompt": "agent-teams/prompts/orchestrator.md",
+    "maxContextBudget": "15%",
+    "responsibilities": [
+      "Parsear planes y extraer fases",
+      "Delegar cada fase a un sub-agente limpio via Task tool",
+      "Recibir reportes estructurados de sub-agentes",
+      "Consolidar resumenes en Engram (mem_save)",
+      "Guardar checkpoints entre fases",
+      "Decidir self-healing si una fase falla",
+      "Crear rama, commits parciales y PR",
+      "NUNCA leer archivos fuente del proyecto",
+      "NUNCA escribir ni editar codigo directamente",
+      "NUNCA ejecutar lint, tests o build directamente"
+    ],
+    "fileOwnership": ["doc/plans/", ".quality/evidence/"],
+    "canDelegate": true,
+    "canImplement": false,
+    "canReadSourceFiles": false,
+    "canWriteCode": false
+  },
+  "roles": {
+    "GoSpecialist": {
+      "model": "sonnet",
+      "responsibilities": [
+        "Go backend (clean architecture: cmd/, internal/, pkg/)",
+        "HTTP handlers, middleware, services",
+        "WebSocket/streaming endpoints",
+        "Go testing con testify + httptest"
+      ],
+      "fileOwnership": ["cmd/", "internal/", "pkg/"]
+    },
+    "ReactSpecialist": {
+      "model": "sonnet",
+      "responsibilities": [
+        "React SPA frontend",
+        "Componentes funcionales + hooks",
+        "TypeScript estricto",
+        "Tailwind CSS"
+      ],
+      "fileOwnership": ["src/", "public/"]
+    },
+    "DesignSpecialist": {
+      "model": "sonnet",
+      "responsibilities": [
+        "Generacion de diseños via Stitch MCP",
+        "Conversion HTML a codigo React",
+        "Design system"
+      ],
+      "fileOwnership": ["doc/design/"],
+      "priority": "FIRST",
+      "note": "Lanzar primero: Stitch tarda minutos por pantalla"
+    },
+    "QAReviewer": {
+      "model": "sonnet",
+      "responsibilities": [
+        "Tests unitarios e integracion",
+        "Coverage 85%+",
+        "Edge cases"
+      ],
+      "fileOwnership": ["test/", "tests/", "__tests__/"]
+    },
+    "AcceptanceTester": {
+      "model": "sonnet",
+      "responsibilities": [
+        "Generar E2E/integration tests desde AC-XX del PRD",
+        "Capturar evidencia visual",
+        "Ejecutar tests y reportar resultados"
+      ],
+      "fileOwnership": ["tests/acceptance/", ".quality/evidence/**/acceptance/"]
+    },
+    "AcceptanceValidator": {
+      "model": "sonnet",
+      "responsibilities": [
+        "Validacion independiente de acceptance criteria",
+        "Verificar implementacion contra PRD",
+        "Emitir veredicto ACCEPTED/CONDITIONAL/REJECTED"
+      ],
+      "fileOwnership": [".quality/evidence/"]
+    }
+  },
+  "qualityGates": {
+    "preCommit": {
+      "go": "golangci-lint run && go test -race ./...",
+      "react": "npx eslint . --fix && npx tsc --noEmit && npx jest"
+    },
+    "minCoverage": 85
+  },
+  "notes": {
+    "activateRoles": "Go + React fullstack",
+    "orchestratorRule": "El Orchestrator NUNCA implementa codigo. Solo planifica, delega, consolida y persiste.",
+    "contextBudget": "Cada Task recibe max ~8,700 tokens."
+  }
+}
