@@ -72,7 +72,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream1ID, ClubID: lazioID, Title: "Lazio vs Roma — Serie A Matchday 28",
 			Description: "Live coverage of the Rome derby", Type: domain.StreamTypeLive,
-			Status: domain.StreamStatusLive, StreamURL: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8",
+			Status: domain.StreamStatusLive, StreamURL: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=225&fit=crop",
 			ViewCount: 320000, Duration: 0, StartedAt: &pastStart,
 			Tags: []string{"football", "serie-a", "derby"}, CreatedAt: now, UpdatedAt: now,
@@ -88,7 +88,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream3ID, ClubID: sevillaID, Title: "Sevilla vs Betis — La Liga Matchday 30",
 			Description: "The Seville derby live from Ramon Sanchez Pizjuan", Type: domain.StreamTypeLive,
-			Status: domain.StreamStatusScheduled, StreamURL: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8",
+			Status: domain.StreamStatusScheduled, StreamURL: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&h=225&fit=crop",
 			ViewCount: 0, Duration: 0, ScheduledAt: &scheduledTime,
 			Tags: []string{"football", "la-liga", "derby"}, CreatedAt: now, UpdatedAt: now,
@@ -104,7 +104,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream5ID, ClubID: legaVolleyID, Title: "Perugia vs Trento — SuperLega Final",
 			Description: "SuperLega championship final live", Type: domain.StreamTypeLive,
-			Status: domain.StreamStatusLive, StreamURL: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8",
+			Status: domain.StreamStatusLive, StreamURL: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=400&h=225&fit=crop",
 			ViewCount: 89000, Duration: 0, StartedAt: &pastStart,
 			Tags: []string{"volleyball", "superlega", "final"}, CreatedAt: now, UpdatedAt: now,
@@ -136,7 +136,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream9ID, ClubID: fibaID, Title: "EuroLeague — Real Madrid vs Olympiacos",
 			Description: "Quarter-final game 3", Type: domain.StreamTypeLive,
-			Status: domain.StreamStatusScheduled, StreamURL: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8",
+			Status: domain.StreamStatusScheduled, StreamURL: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=225&fit=crop",
 			ViewCount: 0, Duration: 0, ScheduledAt: &scheduledTime,
 			Tags: []string{"basketball", "euroleague", "playoffs"}, CreatedAt: now, UpdatedAt: now,
