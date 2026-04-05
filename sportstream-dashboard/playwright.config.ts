@@ -6,8 +6,8 @@ export default defineConfig({
   retries: 1,
   use: {
     baseURL: 'http://localhost:5173',
-    screenshot: 'only-on-failure',
-    trace: 'on-first-retry',
+    screenshot: 'on',
+    trace: 'on',
   },
   webServer: {
     command: 'npm run dev',
