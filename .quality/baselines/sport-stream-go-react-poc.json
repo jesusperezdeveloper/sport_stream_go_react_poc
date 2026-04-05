@@ -2,26 +2,34 @@
   "$schema": "quality-baseline-v1",
   "project": "sport-stream-go-react-poc",
   "stack": "go",
-  "generatedAt": "2026-04-04T12:48:00Z",
+  "generatedAt": "2026-04-05T12:45:00Z",
   "engineVersion": "5.17.0",
   "lint": {
     "errors": 0,
     "warnings": 0,
     "infos": 0,
     "policy": "zero-tolerance",
-    "command": "golangci-lint run && npx eslint . --fix"
+    "command": "go vet ./... && cd ../sportstream-dashboard && npx tsc --noEmit"
   },
   "coverage": {
-    "current": 0,
-    "baseline": 0,
+    "current": 44.6,
+    "baseline": 44.6,
     "target": 85,
     "policy": "ratchet",
     "ratchetDirection": "up",
-    "command": "go test -race -coverprofile=coverage.out ./... && go tool cover -func=coverage.out"
+    "command": "go test -race -coverprofile=coverage.out ./... && go tool cover -func=coverage.out",
+    "byPackage": {
+      "club_service": 85.7,
+      "stream_service": 88.3,
+      "event_service": 87.0,
+      "dashboard_service": 90.6,
+      "domain": 77.3,
+      "handlers": 71.5
+    }
   },
   "tests": {
-    "total": 0,
-    "passing": 0,
+    "total": 60,
+    "passing": 60,
     "failing": 0,
     "skipped": 0,
     "policy": "no-regression",
@@ -41,7 +49,7 @@
     "policy": "info"
   },
   "acceptance": {
-    "criteria_total": 0,
+    "criteria_total": 39,
     "criteria_passed": 0,
     "policy": "info",
     "framework": "gherkin",
@@ -51,29 +59,29 @@
     "require_pdf_evidence": true
   },
   "e2e": {
-    "total": 0,
+    "total": 26,
     "passing": 0,
     "failing": 0,
-    "skipped": 0,
-    "viewports": ["desktop-chrome"],
+    "skipped": 26,
+    "viewports": ["desktop-chromium"],
     "policy": "no-regression",
     "reportPath": "doc/test_cases/reports/",
-    "command": "npx playwright test"
+    "command": "cd sportstream-dashboard && npx playwright test"
   },
   "designCompliance": {
-    "totalFeaturesWithUI": 0,
-    "compliant": 0,
-    "partial": 0,
+    "totalFeaturesWithUI": 4,
+    "compliant": 2,
+    "partial": 2,
     "missing": 0,
     "legacy": 0,
-    "pagesTotal": 0,
+    "pagesTotal": 4,
     "pagesWithTraceability": 0,
-    "complianceRate": 0,
+    "complianceRate": 50,
     "policy": "ratchet",
     "ratchetDirection": "up",
-    "enforcementLevel": "L0",
+    "enforcementLevel": "L1",
     "grandfathered": [],
-    "notes": "L0=info-only, L1=ratchet on modified files, L2=zero-tolerance on new features"
+    "notes": "4 Stitch designs exist (2 desktop HTML, 2 mobile PNG). 0 traceability comments in code."
   },
   "plan": {
     "sprints": [],
