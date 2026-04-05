@@ -1,1 +1,0 @@
-/Users/jesusperezsanchez/Desktop/Proyectos/0_jps_iautomat/jpsdeveloper/specbox-engine/.claude/hooks/read-tracker.mjs

@@ -80,3 +80,6 @@ yarn-error.log*
 # ========================
 .quality/state/
 .quality/logs/
+
+# Claude Code
+.claude/

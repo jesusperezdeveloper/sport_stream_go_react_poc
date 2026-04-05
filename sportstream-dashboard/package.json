@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.0.0",
+    "hls.js": "^1.6.15",
     "lucide-react": "^0.500.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -72,7 +72,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream1ID, ClubID: lazioID, Title: "Lazio vs Roma — Serie A Matchday 28",
 			Description: "Live coverage of the Rome derby", Type: domain.StreamTypeLive,
-			Status: domain.StreamStatusLive, StreamURL: "https://stream.sportstream.dev/live/lazio-roma",
+			Status: domain.StreamStatusLive, StreamURL: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=225&fit=crop",
 			ViewCount: 320000, Duration: 0, StartedAt: &pastStart,
 			Tags: []string{"football", "serie-a", "derby"}, CreatedAt: now, UpdatedAt: now,
@@ -80,7 +80,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream2ID, ClubID: lazioID, Title: "Lazio Training Session — Behind the Scenes",
 			Description: "Exclusive access to the training ground", Type: domain.StreamTypeBehindTheScenes,
-			Status: domain.StreamStatusArchived, StreamURL: "https://stream.sportstream.dev/vod/lazio-training",
+			Status: domain.StreamStatusArchived, StreamURL: "https://cdn.jwplayer.com/manifests/pZxWPRg4.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?w=400&h=225&fit=crop",
 			ViewCount: 45000, Duration: 1800, StartedAt: &pastStart, EndedAt: &pastEnd,
 			Tags: []string{"football", "training", "exclusive"}, CreatedAt: now, UpdatedAt: now,
@@ -88,7 +88,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream3ID, ClubID: sevillaID, Title: "Sevilla vs Betis — La Liga Matchday 30",
 			Description: "The Seville derby live from Ramon Sanchez Pizjuan", Type: domain.StreamTypeLive,
-			Status: domain.StreamStatusScheduled, StreamURL: "https://stream.sportstream.dev/live/sevilla-betis",
+			Status: domain.StreamStatusScheduled, StreamURL: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&h=225&fit=crop",
 			ViewCount: 0, Duration: 0, ScheduledAt: &scheduledTime,
 			Tags: []string{"football", "la-liga", "derby"}, CreatedAt: now, UpdatedAt: now,
@@ -96,7 +96,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream4ID, ClubID: sevillaID, Title: "Sevilla FC — Season Highlights 2025/26",
 			Description: "Best moments of the season", Type: domain.StreamTypeHighlight,
-			Status: domain.StreamStatusArchived, StreamURL: "https://stream.sportstream.dev/vod/sevilla-highlights",
+			Status: domain.StreamStatusArchived, StreamURL: "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1459865264687-595d652de67e?w=400&h=225&fit=crop",
 			ViewCount: 150000, Duration: 720, StartedAt: &pastStart, EndedAt: &pastEnd,
 			Tags: []string{"football", "highlights"}, CreatedAt: now, UpdatedAt: now,
@@ -104,7 +104,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream5ID, ClubID: legaVolleyID, Title: "Perugia vs Trento — SuperLega Final",
 			Description: "SuperLega championship final live", Type: domain.StreamTypeLive,
-			Status: domain.StreamStatusLive, StreamURL: "https://stream.sportstream.dev/live/perugia-trento",
+			Status: domain.StreamStatusLive, StreamURL: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=400&h=225&fit=crop",
 			ViewCount: 89000, Duration: 0, StartedAt: &pastStart,
 			Tags: []string{"volleyball", "superlega", "final"}, CreatedAt: now, UpdatedAt: now,
@@ -112,7 +112,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream6ID, ClubID: legaVolleyID, Title: "SuperLega — Best Rallies of the Week",
 			Description: "Top rallies compilation", Type: domain.StreamTypeHighlight,
-			Status: domain.StreamStatusArchived, StreamURL: "https://stream.sportstream.dev/vod/superlega-rallies",
+			Status: domain.StreamStatusArchived, StreamURL: "https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=400&h=225&fit=crop",
 			ViewCount: 62000, Duration: 600, StartedAt: &pastStart, EndedAt: &pastEnd,
 			Tags: []string{"volleyball", "highlights"}, CreatedAt: now, UpdatedAt: now,
@@ -120,7 +120,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream7ID, ClubID: superTennixID, Title: "ATP Rome Masters — Sinner vs Djokovic",
 			Description: "Semi-final live from Foro Italico", Type: domain.StreamTypeLive,
-			Status: domain.StreamStatusEnded, StreamURL: "https://stream.sportstream.dev/live/sinner-djokovic",
+			Status: domain.StreamStatusEnded, StreamURL: "https://storage.googleapis.com/shaka-demo-assets/bbb-dark-truths-hls/hls.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=400&h=225&fit=crop",
 			ViewCount: 510000, Duration: 7200, StartedAt: &pastStart, EndedAt: &pastEnd,
 			Tags: []string{"tennis", "atp", "masters"}, CreatedAt: now, UpdatedAt: now,
@@ -128,7 +128,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream8ID, ClubID: superTennixID, Title: "Roland Garros — Day 5 Highlights",
 			Description: "Best matches from day 5", Type: domain.StreamTypeVOD,
-			Status: domain.StreamStatusArchived, StreamURL: "https://stream.sportstream.dev/vod/rg-day5",
+			Status: domain.StreamStatusArchived, StreamURL: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1504016798967-59a258e9386d?w=400&h=225&fit=crop",
 			ViewCount: 230000, Duration: 3600, StartedAt: &pastStart, EndedAt: &pastEnd,
 			Tags: []string{"tennis", "grand-slam", "vod"}, CreatedAt: now, UpdatedAt: now,
@@ -136,7 +136,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream9ID, ClubID: fibaID, Title: "EuroLeague — Real Madrid vs Olympiacos",
 			Description: "Quarter-final game 3", Type: domain.StreamTypeLive,
-			Status: domain.StreamStatusScheduled, StreamURL: "https://stream.sportstream.dev/live/rm-olympiacos",
+			Status: domain.StreamStatusScheduled, StreamURL: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=225&fit=crop",
 			ViewCount: 0, Duration: 0, ScheduledAt: &scheduledTime,
 			Tags: []string{"basketball", "euroleague", "playoffs"}, CreatedAt: now, UpdatedAt: now,
@@ -144,7 +144,7 @@ func SeedData(clubRepo *ClubRepository, streamRepo *StreamRepository, eventRepo 
 		{
 			ID: stream10ID, ClubID: fibaID, Title: "FIBA Europe — Top 10 Plays March 2026",
 			Description: "Monthly top plays compilation", Type: domain.StreamTypeHighlight,
-			Status: domain.StreamStatusArchived, StreamURL: "https://stream.sportstream.dev/vod/fiba-top10-march",
+			Status: domain.StreamStatusArchived, StreamURL: "https://cdn.jwplayer.com/manifests/pZxWPRg4.m3u8",
 			ThumbnailURL: "https://images.unsplash.com/photo-1471295253337-3ceaaedca402?w=400&h=225&fit=crop",
 			ViewCount: 175000, Duration: 480, StartedAt: &pastStart, EndedAt: &pastEnd,
 			Tags: []string{"basketball", "highlights", "top-plays"}, CreatedAt: now, UpdatedAt: now,

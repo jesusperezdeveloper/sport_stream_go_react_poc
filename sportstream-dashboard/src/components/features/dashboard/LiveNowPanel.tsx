@@ -1,4 +1,5 @@
 import { useStreams } from '../../../hooks/useStreams';
+import { VideoPlayer } from '../../ui/VideoPlayer';
 
 function formatViewers(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
@@ -33,13 +34,15 @@ export function LiveNowPanel() {
           {/* Featured stream */}
           {featured && (
             <div className="group relative bg-white/5 rounded-xl overflow-hidden hover:bg-white/10 transition-colors">
-              <div className="aspect-video w-full bg-slate-800 relative">
-                {featured.thumbnailUrl ? (
-                  <img alt={featured.title} className="w-full h-full object-cover opacity-80" src={featured.thumbnailUrl} />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-slate-700 to-slate-900" />
-                )}
-                <div className="absolute bottom-2 left-2 bg-error text-[10px] font-black px-2 py-0.5 rounded-sm text-white">
+              <div className="relative">
+                <VideoPlayer
+                  src={featured.streamUrl}
+                  poster={featured.thumbnailUrl}
+                  autoPlay
+                  muted
+                  className="aspect-video w-full"
+                />
+                <div className="absolute bottom-2 left-2 bg-error text-[10px] font-black px-2 py-0.5 rounded-sm text-white z-10">
                   {formatViewers(featured.viewCount)} VIEWERS
                 </div>
               </div>

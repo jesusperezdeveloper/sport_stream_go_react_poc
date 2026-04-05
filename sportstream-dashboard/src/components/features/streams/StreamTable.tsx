@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react';
-import { StopCircle, MoreVertical, TrendingUp, Zap } from 'lucide-react';
+import { StopCircle, MoreVertical, TrendingUp, Zap, Play } from 'lucide-react';
 import { StatusBadge } from '../../ui/StatusBadge';
 import { StreamFilters } from './StreamFilters';
+import { StreamModal } from '../../ui/StreamModal';
 import { useStreams } from '../../../hooks/useStreams';
 import { useClubs } from '../../../hooks/useClubs';
 import type { Stream, StreamStatus, StreamType } from '../../../types/stream';
@@ -28,7 +29,7 @@ const TYPE_BADGE_STYLES: Record<string, string> = {
   behind_the_scenes: 'bg-tertiary-container/30 text-on-tertiary-container',
 };
 
-function StreamMobileCard({ stream, clubName }: { stream: Stream; clubName: string }) {
+function StreamMobileCard({ stream, clubName, onWatch }: { stream: Stream; clubName: string; onWatch: () => void }) {
   return (
     <div className="bg-surface-container-lowest rounded-xl p-4 shadow-sm border border-outline-variant/10">
       <div className="flex gap-3">
@@ -58,6 +59,14 @@ function StreamMobileCard({ stream, clubName }: { stream: Stream; clubName: stri
               {formatViews(stream.viewCount)} views
             </span>
           )}
+          {stream.status !== 'scheduled' && (
+            <button
+              onClick={onWatch}
+              className="text-primary hover:bg-primary/10 px-2 py-1 rounded-md text-xs font-bold transition-all inline-flex items-center gap-1 min-h-[44px]"
+            >
+              <Play size={14} /> Watch
+            </button>
+          )}
           {stream.status === 'live' ? (
             <button className="text-error hover:bg-error-container/30 px-2 py-1 rounded-md text-xs font-bold transition-all inline-flex items-center gap-1 min-h-[44px]">
               <StopCircle size={14} /> End
@@ -80,6 +89,7 @@ function StreamMobileCard({ stream, clubName }: { stream: Stream; clubName: stri
 export function StreamTable() {
   const [status, setStatus] = useState<StreamStatus | ''>('');
   const [type, setType] = useState<StreamType | ''>('');
+  const [watchStream, setWatchStream] = useState<Stream | null>(null);
 
   const filters = {
     ...(status ? { status } : {}),
@@ -135,6 +145,7 @@ export function StreamTable() {
                   key={stream.id}
                   stream={stream}
                   clubName={clubNameMap.get(stream.clubId) ?? stream.clubId}
+                  onWatch={() => setWatchStream(stream)}
                 />
               ))
             )}
@@ -208,19 +219,29 @@ export function StreamTable() {
 
                       {/* Actions */}
                       <td className="py-5 px-6 text-right">
-                        {stream.status === 'live' ? (
-                          <button className="text-error hover:bg-error-container/30 px-3 py-1 rounded-md text-xs font-bold transition-all inline-flex items-center gap-1">
-                            <StopCircle size={14} /> End
-                          </button>
-                        ) : stream.status === 'scheduled' ? (
-                          <button className="bg-primary text-on-primary hover:bg-on-primary-container px-3 py-1 rounded-md text-xs font-bold transition-all shadow-sm">
-                            Go Live
-                          </button>
-                        ) : (
-                          <button className="text-on-surface-variant hover:text-primary transition-colors">
-                            <MoreVertical size={18} />
-                          </button>
-                        )}
+                        <div className="flex items-center justify-end gap-2">
+                          {stream.status !== 'scheduled' && (
+                            <button
+                              onClick={() => setWatchStream(stream)}
+                              className="text-primary hover:bg-primary/10 px-3 py-1 rounded-md text-xs font-bold transition-all inline-flex items-center gap-1"
+                            >
+                              <Play size={14} /> Watch
+                            </button>
+                          )}
+                          {stream.status === 'live' ? (
+                            <button className="text-error hover:bg-error-container/30 px-3 py-1 rounded-md text-xs font-bold transition-all inline-flex items-center gap-1">
+                              <StopCircle size={14} /> End
+                            </button>
+                          ) : stream.status === 'scheduled' ? (
+                            <button className="bg-primary text-on-primary hover:bg-on-primary-container px-3 py-1 rounded-md text-xs font-bold transition-all shadow-sm">
+                              Go Live
+                            </button>
+                          ) : (
+                            <button className="text-on-surface-variant hover:text-primary transition-colors">
+                              <MoreVertical size={18} />
+                            </button>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -294,6 +315,15 @@ export function StreamTable() {
           <Zap size={80} className="absolute -right-4 -bottom-4 text-white/5 rotate-12" />
         </div>
       </div>
+
+      {/* Watch Stream Modal */}
+      {watchStream && (
+        <StreamModal
+          stream={watchStream}
+          clubName={clubNameMap.get(watchStream.clubId) ?? watchStream.clubId}
+          onClose={() => setWatchStream(null)}
+        />
+      )}
     </div>
   );
 }
