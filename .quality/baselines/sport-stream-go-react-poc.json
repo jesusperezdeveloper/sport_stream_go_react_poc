@@ -1,0 +1,82 @@
+{
+  "$schema": "quality-baseline-v1",
+  "project": "sport-stream-go-react-poc",
+  "stack": "go",
+  "generatedAt": "2026-04-04T12:48:00Z",
+  "engineVersion": "5.17.0",
+  "lint": {
+    "errors": 0,
+    "warnings": 0,
+    "infos": 0,
+    "policy": "zero-tolerance",
+    "command": "golangci-lint run && npx eslint . --fix"
+  },
+  "coverage": {
+    "current": 0,
+    "baseline": 0,
+    "target": 85,
+    "policy": "ratchet",
+    "ratchetDirection": "up",
+    "command": "go test -race -coverprofile=coverage.out ./... && go tool cover -func=coverage.out"
+  },
+  "tests": {
+    "total": 0,
+    "passing": 0,
+    "failing": 0,
+    "skipped": 0,
+    "policy": "no-regression",
+    "command": "go test -race ./..."
+  },
+  "architecture": {
+    "layerViolations": 0,
+    "policy": "ratchet"
+  },
+  "deadCode": {
+    "count": 0,
+    "policy": "ratchet"
+  },
+  "deps": {
+    "outdated": 0,
+    "vulnerable": 0,
+    "policy": "info"
+  },
+  "acceptance": {
+    "criteria_total": 0,
+    "criteria_passed": 0,
+    "policy": "info",
+    "framework": "gherkin",
+    "language": "es",
+    "min_pass_rate": 100,
+    "require_screenshots": true,
+    "require_pdf_evidence": true
+  },
+  "e2e": {
+    "total": 0,
+    "passing": 0,
+    "failing": 0,
+    "skipped": 0,
+    "viewports": ["desktop-chrome"],
+    "policy": "no-regression",
+    "reportPath": "doc/test_cases/reports/",
+    "command": "npx playwright test"
+  },
+  "designCompliance": {
+    "totalFeaturesWithUI": 0,
+    "compliant": 0,
+    "partial": 0,
+    "missing": 0,
+    "legacy": 0,
+    "pagesTotal": 0,
+    "pagesWithTraceability": 0,
+    "complianceRate": 0,
+    "policy": "ratchet",
+    "ratchetDirection": "up",
+    "enforcementLevel": "L0",
+    "grandfathered": [],
+    "notes": "L0=info-only, L1=ratchet on modified files, L2=zero-tolerance on new features"
+  },
+  "plan": {
+    "sprints": [],
+    "currentSprint": 0
+  }
+}
