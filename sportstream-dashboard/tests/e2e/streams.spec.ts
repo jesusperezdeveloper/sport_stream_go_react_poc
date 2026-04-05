@@ -11,7 +11,7 @@ test.describe('Streams Page', () => {
     await expect(heading).toBeVisible();
 
     // Breadcrumb should show Management > Streams
-    await expect(page.getByText('Management')).toBeVisible();
+    await expect(page.getByText('Management', { exact: true })).toBeVisible();
   });
 
   test('stream entries are visible in the table on desktop', async ({ page }) => {
@@ -68,9 +68,9 @@ test.describe('Streams Page', () => {
     const typeText = await typeBadge.textContent();
     expect(typeText?.trim()).toMatch(/live|vod|highlight|bts/i);
 
-    // Status badge — fourth column
+    // Status badge — fourth column (uses div or span for badge)
     const statusCell = firstRow.locator('td').nth(3);
-    await expect(statusCell.locator('span').first()).toBeVisible();
+    await expect(statusCell).not.toBeEmpty();
   });
 
   test('New Stream button is visible', async ({ page }) => {

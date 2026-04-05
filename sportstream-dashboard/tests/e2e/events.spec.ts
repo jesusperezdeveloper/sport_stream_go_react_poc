@@ -11,7 +11,7 @@ test.describe('Events Page', () => {
     await expect(heading).toBeVisible();
 
     // Breadcrumb should show Management > Events
-    await expect(page.getByText('Management')).toBeVisible();
+    await expect(page.getByText('Management', { exact: true })).toBeVisible();
   });
 
   test('event entries are visible after loading', async ({ page }) => {

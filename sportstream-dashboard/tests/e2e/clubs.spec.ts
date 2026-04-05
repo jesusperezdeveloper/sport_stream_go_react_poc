@@ -11,7 +11,7 @@ test.describe('Clubs Page', () => {
     await expect(heading).toBeVisible();
 
     // Breadcrumb should show Management > Clubs
-    await expect(page.getByText('Management')).toBeVisible();
+    await expect(page.getByText('Management', { exact: true })).toBeVisible();
   });
 
   test('club cards are visible in a grid', async ({ page }) => {

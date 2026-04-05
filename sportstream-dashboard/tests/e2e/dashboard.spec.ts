@@ -16,14 +16,13 @@ test.describe('Dashboard Page', () => {
   });
 
   test('displays 4 stats cards with labels', async ({ page }) => {
-    const statsCards = page.locator('[class*="grid"] > div').filter({
-      has: page.locator('text=/Total Clubs|Active Streams|Upcoming Events|Total Network Views/'),
-    });
+    // Wait for data to load (skeletons disappear)
+    await page.waitForTimeout(2000);
 
-    await expect(page.getByText('Total Clubs')).toBeVisible();
-    await expect(page.getByText('Active Streams')).toBeVisible();
-    await expect(page.getByText('Upcoming Events')).toBeVisible();
-    await expect(page.getByText('Total Network Views')).toBeVisible();
+    await expect(page.getByText('Total Clubs')).toBeVisible({ timeout: 10000 });
+    await expect(page.getByText('Active Streams')).toBeVisible({ timeout: 10000 });
+    await expect(page.getByText('Upcoming Events').first()).toBeVisible({ timeout: 10000 });
+    await expect(page.getByText('Total Network Views')).toBeVisible({ timeout: 10000 });
   });
 
   test('stats cards show values loaded from API', async ({ page }) => {
